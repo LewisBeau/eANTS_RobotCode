@@ -1,0 +1,947 @@
+
+eANTS_main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000006  00800100  00000578  0000060c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000578  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000028  00800106  00800106  00000612  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000612  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000644  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000058  00000000  00000000  00000684  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000010e6  00000000  00000000  000006dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007d6  00000000  00000000  000017c2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000006d1  00000000  00000000  00001f98  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000ec  00000000  00000000  0000266c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000817  00000000  00000000  00002758  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000050a  00000000  00000000  00002f6f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000060  00000000  00000000  00003479  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e8 e7       	ldi	r30, 0x78	; 120
+  7c:	f5 e0       	ldi	r31, 0x05	; 5
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a6 30       	cpi	r26, 0x06	; 6
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a6 e0       	ldi	r26, 0x06	; 6
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	ae 32       	cpi	r26, 0x2E	; 46
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 a9 02 	call	0x552	; 0x552 <main>
+  9e:	0c 94 ba 02 	jmp	0x574	; 0x574 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <INIT_CARRIER>:
+/* Creates a PWM carrier signal on PORTB1/ Arduino pin ~9
+/************************************************************************/
+void INIT_CARRIER(){
+
+	//Carry signal pin
+	DDRB |= (1 << CARRY_PIN);
+  a6:	21 9a       	sbi	0x04, 1	; 4
+
+	//Frequency and duty cycle
+	ICR1 = 26;
+  a8:	8a e1       	ldi	r24, 0x1A	; 26
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+  b0:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+	OCR1A = 13;
+  b4:	8d e0       	ldi	r24, 0x0D	; 13
+  b6:	90 e0       	ldi	r25, 0x00	; 0
+  b8:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7e0089>
+  bc:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7e0088>
+
+	TCCR1A =
+  c0:	80 e8       	ldi	r24, 0x80	; 128
+  c2:	80 93 80 00 	sts	0x0080, r24	; 0x800080 <__TEXT_REGION_LENGTH__+0x7e0080>
+	// Compare output mode:
+	(1 << COM1A1) | (0 << COM1A0) |
+	// lower 2 WGM bits:
+	(0 << WGM11) | (0 << WGM10);
+
+	TCCR1B =
+  c6:	82 e1       	ldi	r24, 0x12	; 18
+  c8:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7e0081>
+  cc:	08 95       	ret
+
+000000ce <USART_Init>:
+/************************************************************************/
+/* Initialize serial communication                                      */
+/************************************************************************/
+void USART_Init( unsigned int ubrr){
+	/*Set baud rate */
+	UBRR0H = (unsigned char)(ubrr>>8);
+  ce:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+	UBRR0L = (unsigned char)ubrr;
+  d2:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+	/*Enable receiver and transmitter */
+	UCSR0B = (1<<RXEN0)|(1<<TXEN0);
+  d6:	88 e1       	ldi	r24, 0x18	; 24
+  d8:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+	/* Set frame format: 8data, 2stop bit */
+	UCSR0C = (1<<USBS0)|(3<<UCSZ00);
+  dc:	8e e0       	ldi	r24, 0x0E	; 14
+  de:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+  e2:	08 95       	ret
+
+000000e4 <USART_Transmit>:
+/************************************************************************/
+/* Transmit characters over the serial connection                       */
+/************************************************************************/
+void USART_Transmit( unsigned char data ){
+	/* Wait for empty transmit buffer */
+	while ( !( UCSR0A & (1<<UDRE0)) );
+  e4:	e0 ec       	ldi	r30, 0xC0	; 192
+  e6:	f0 e0       	ldi	r31, 0x00	; 0
+  e8:	90 81       	ld	r25, Z
+  ea:	95 ff       	sbrs	r25, 5
+  ec:	fd cf       	rjmp	.-6      	; 0xe8 <USART_Transmit+0x4>
+	/* Put data into buffer, sends the data */
+	UDR0 = data;
+  ee:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+  f2:	08 95       	ret
+
+000000f4 <USART_Receive>:
+
+
+/************************************************************************/
+/* Receive characters from the serial connection                         */
+/************************************************************************/
+unsigned char USART_Receive( void ){
+  f4:	80 e2       	ldi	r24, 0x20	; 32
+  f6:	91 ea       	ldi	r25, 0xA1	; 161
+  f8:	a7 e0       	ldi	r26, 0x07	; 7
+  fa:	b0 e0       	ldi	r27, 0x00	; 0
+	uint32_t i = 500000;  //timeout of approx. F_CPU/5e6 = 1/32 sec = 30 ms
+	do {
+		if(UCSR0A & (1<<RXC0)){
+  fc:	e0 ec       	ldi	r30, 0xC0	; 192
+  fe:	f0 e0       	ldi	r31, 0x00	; 0
+ 100:	20 81       	ld	r18, Z
+ 102:	22 23       	and	r18, r18
+ 104:	1c f4       	brge	.+6      	; 0x10c <USART_Receive+0x18>
+			return UDR0;
+ 106:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 10a:	08 95       	ret
+ 10c:	01 97       	sbiw	r24, 0x01	; 1
+ 10e:	a1 09       	sbc	r26, r1
+ 110:	b1 09       	sbc	r27, r1
+		}
+	} while (--i);
+ 112:	b1 f7       	brne	.-20     	; 0x100 <USART_Receive+0xc>
+	return MESSAGE_ERROR_BYTE;
+ 114:	8f ef       	ldi	r24, 0xFF	; 255
+	
+}
+ 116:	08 95       	ret
+
+00000118 <SETUP_IO>:
+/*Sets up the IO on the micro controller             
+/************************************************************************/
+void SETUP_IO(){
+
+	//RGB LED
+	DDRD |= (1 << REDPIN);
+ 118:	53 9a       	sbi	0x0a, 3	; 10
+	DDRD |= (1 << GREENPIN);
+ 11a:	54 9a       	sbi	0x0a, 4	; 10
+	DDRD |= (1 << BLUEPIN);
+ 11c:	55 9a       	sbi	0x0a, 5	; 10
+ 11e:	08 95       	ret
+
+00000120 <SET_COLOUR>:
+/************************************************************************/
+/* Sets the RGB LED to the desired colour
+/************************************************************************/
+//red, green, blue
+void SET_COLOUR(int colour){
+	if ((1 << 0) & colour){
+ 120:	80 ff       	sbrs	r24, 0
+ 122:	02 c0       	rjmp	.+4      	; 0x128 <SET_COLOUR+0x8>
+		PORTD |= (1 << REDPIN);
+ 124:	5b 9a       	sbi	0x0b, 3	; 11
+ 126:	01 c0       	rjmp	.+2      	; 0x12a <SET_COLOUR+0xa>
+		}else{
+		PORTD &= ~(1 << REDPIN);
+ 128:	5b 98       	cbi	0x0b, 3	; 11
+	}
+	if ((1 << 1) & colour){
+ 12a:	81 ff       	sbrs	r24, 1
+ 12c:	02 c0       	rjmp	.+4      	; 0x132 <SET_COLOUR+0x12>
+		PORTD |= (1 << GREENPIN);
+ 12e:	5c 9a       	sbi	0x0b, 4	; 11
+ 130:	01 c0       	rjmp	.+2      	; 0x134 <SET_COLOUR+0x14>
+		}else{
+		PORTD &= ~(1 << GREENPIN);
+ 132:	5c 98       	cbi	0x0b, 4	; 11
+	}
+	if ((1 << 2) & colour){
+ 134:	82 ff       	sbrs	r24, 2
+ 136:	02 c0       	rjmp	.+4      	; 0x13c <SET_COLOUR+0x1c>
+		PORTD |= (1 << BLUEPIN);
+ 138:	5d 9a       	sbi	0x0b, 5	; 11
+ 13a:	08 95       	ret
+		}else{
+		PORTD &= ~(1 << BLUEPIN);
+ 13c:	5d 98       	cbi	0x0b, 5	; 11
+ 13e:	08 95       	ret
+
+00000140 <HANDLE_MESSAGE>:
+
+/************************************************************************/
+/* Deals with incoming messages
+/************************************************************************/
+
+void HANDLE_MESSAGE( unsigned char address){
+ 140:	2f 92       	push	r2
+ 142:	3f 92       	push	r3
+ 144:	4f 92       	push	r4
+ 146:	6f 92       	push	r6
+ 148:	7f 92       	push	r7
+ 14a:	8f 92       	push	r8
+ 14c:	9f 92       	push	r9
+ 14e:	af 92       	push	r10
+ 150:	bf 92       	push	r11
+ 152:	cf 92       	push	r12
+ 154:	df 92       	push	r13
+ 156:	ef 92       	push	r14
+ 158:	ff 92       	push	r15
+ 15a:	0f 93       	push	r16
+ 15c:	1f 93       	push	r17
+ 15e:	cf 93       	push	r28
+ 160:	df 93       	push	r29
+	
+	if (address == ADDRESS||(address_group1 == 1 && address == ADDRESS_GROUP1_BYTE) ||
+ 162:	81 30       	cpi	r24, 0x01	; 1
+ 164:	a9 f0       	breq	.+42     	; 0x190 <HANDLE_MESSAGE+0x50>
+ 166:	90 91 24 01 	lds	r25, 0x0124	; 0x800124 <address_group1>
+ 16a:	91 30       	cpi	r25, 0x01	; 1
+ 16c:	11 f4       	brne	.+4      	; 0x172 <HANDLE_MESSAGE+0x32>
+ 16e:	8c 3c       	cpi	r24, 0xCC	; 204
+ 170:	79 f0       	breq	.+30     	; 0x190 <HANDLE_MESSAGE+0x50>
+ 172:	90 91 23 01 	lds	r25, 0x0123	; 0x800123 <address_group2>
+ 176:	91 30       	cpi	r25, 0x01	; 1
+ 178:	11 f4       	brne	.+4      	; 0x17e <HANDLE_MESSAGE+0x3e>
+	(address_group2 == 1 && address == ADDRESS_GROUP2_BYTE) ||
+ 17a:	8d 3c       	cpi	r24, 0xCD	; 205
+ 17c:	49 f0       	breq	.+18     	; 0x190 <HANDLE_MESSAGE+0x50>
+ 17e:	90 91 22 01 	lds	r25, 0x0122	; 0x800122 <address_group3>
+ 182:	91 30       	cpi	r25, 0x01	; 1
+ 184:	11 f4       	brne	.+4      	; 0x18a <HANDLE_MESSAGE+0x4a>
+	(address_group3 == 1 && address == ADDRESS_GROUP3_BYTE) ||
+ 186:	8e 3c       	cpi	r24, 0xCE	; 206
+ 188:	19 f0       	breq	.+6      	; 0x190 <HANDLE_MESSAGE+0x50>
+ 18a:	83 3b       	cpi	r24, 0xB3	; 179
+ 18c:	09 f0       	breq	.+2      	; 0x190 <HANDLE_MESSAGE+0x50>
+ 18e:	cf c1       	rjmp	.+926    	; 0x52e <__LOCK_REGION_LENGTH__+0x12e>
+ 190:	08 2f       	mov	r16, r24
+	address == ALL_ROBOTS_BYTE){
+		
+		SET_COLOUR(LIGHTGREEN);
+ 192:	83 e0       	ldi	r24, 0x03	; 3
+ 194:	90 e0       	ldi	r25, 0x00	; 0
+ 196:	0e 94 90 00 	call	0x120	; 0x120 <SET_COLOUR>
+
+		//PORTB |= (1 << LED_PIN);
+		//Receive next message
+		unsigned char message = USART_Receive();
+ 19a:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 19e:	18 2f       	mov	r17, r24
+		
+		//Loop until all robot have been addresses
+		while(message!= BEGIN_BYTE && message != MESSAGE_ERROR_BYTE && message != END_BYTE){
+ 1a0:	89 3c       	cpi	r24, 0xC9	; 201
+ 1a2:	09 f4       	brne	.+2      	; 0x1a6 <HANDLE_MESSAGE+0x66>
+ 1a4:	ae c1       	rjmp	.+860    	; 0x502 <__LOCK_REGION_LENGTH__+0x102>
+ 1a6:	8f 3f       	cpi	r24, 0xFF	; 255
+ 1a8:	61 f0       	breq	.+24     	; 0x1c2 <HANDLE_MESSAGE+0x82>
+ 1aa:	8a 3c       	cpi	r24, 0xCA	; 202
+ 1ac:	51 f0       	breq	.+20     	; 0x1c2 <HANDLE_MESSAGE+0x82>
+			message = USART_Receive();
+ 1ae:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 1b2:	18 2f       	mov	r17, r24
+		//PORTB |= (1 << LED_PIN);
+		//Receive next message
+		unsigned char message = USART_Receive();
+		
+		//Loop until all robot have been addresses
+		while(message!= BEGIN_BYTE && message != MESSAGE_ERROR_BYTE && message != END_BYTE){
+ 1b4:	89 3c       	cpi	r24, 0xC9	; 201
+ 1b6:	09 f4       	brne	.+2      	; 0x1ba <HANDLE_MESSAGE+0x7a>
+ 1b8:	a4 c1       	rjmp	.+840    	; 0x502 <__LOCK_REGION_LENGTH__+0x102>
+ 1ba:	8f 3f       	cpi	r24, 0xFF	; 255
+ 1bc:	11 f0       	breq	.+4      	; 0x1c2 <HANDLE_MESSAGE+0x82>
+ 1be:	8a 3c       	cpi	r24, 0xCA	; 202
+ 1c0:	b1 f7       	brne	.-20     	; 0x1ae <HANDLE_MESSAGE+0x6e>
+		int request3 = 0;
+		int request4 = 0;
+		int request5 = 0;
+		int request6 = 0;
+
+		while(message != MESSAGE_ERROR_BYTE && message != END_BYTE){
+ 1c2:	1f 3f       	cpi	r17, 0xFF	; 255
+ 1c4:	09 f4       	brne	.+2      	; 0x1c8 <HANDLE_MESSAGE+0x88>
+ 1c6:	b3 c1       	rjmp	.+870    	; 0x52e <__LOCK_REGION_LENGTH__+0x12e>
+ 1c8:	1a 3c       	cpi	r17, 0xCA	; 202
+ 1ca:	09 f4       	brne	.+2      	; 0x1ce <HANDLE_MESSAGE+0x8e>
+ 1cc:	b0 c1       	rjmp	.+864    	; 0x52e <__LOCK_REGION_LENGTH__+0x12e>
+ 1ce:	a1 2c       	mov	r10, r1
+ 1d0:	b1 2c       	mov	r11, r1
+ 1d2:	61 2c       	mov	r6, r1
+ 1d4:	71 2c       	mov	r7, r1
+ 1d6:	81 2c       	mov	r8, r1
+ 1d8:	91 2c       	mov	r9, r1
+ 1da:	e1 2c       	mov	r14, r1
+ 1dc:	f1 2c       	mov	r15, r1
+ 1de:	c1 2c       	mov	r12, r1
+ 1e0:	d1 2c       	mov	r13, r1
+ 1e2:	c0 e0       	ldi	r28, 0x00	; 0
+ 1e4:	d0 e0       	ldi	r29, 0x00	; 0
+			//////////////////////////////////////////////////////////////////////////
+			//Information requests
+			//step 1: register all the sent requests
+			
+			if(message == STATUS1_BYTE){
+				request1 = 1;
+ 1e6:	33 24       	eor	r3, r3
+ 1e8:	33 94       	inc	r3
+ 1ea:	41 2c       	mov	r4, r1
+ 1ec:	22 24       	eor	r2, r2
+ 1ee:	2a 94       	dec	r2
+		int request5 = 0;
+		int request6 = 0;
+
+		while(message != MESSAGE_ERROR_BYTE && message != END_BYTE){
+			
+			SET_COLOUR(LIGHTGREEN);
+ 1f0:	83 e0       	ldi	r24, 0x03	; 3
+ 1f2:	90 e0       	ldi	r25, 0x00	; 0
+ 1f4:	0e 94 90 00 	call	0x120	; 0x120 <SET_COLOUR>
+			//////////////////////////////////////////////////////////////////////////
+			//Control requests
+
+			if (message == SENSE1_BYTE){
+ 1f8:	1c 3d       	cpi	r17, 0xDC	; 220
+ 1fa:	79 f4       	brne	.+30     	; 0x21a <HANDLE_MESSAGE+0xda>
+				sense1[0] = message;
+ 1fc:	8c ed       	ldi	r24, 0xDC	; 220
+ 1fe:	90 e0       	ldi	r25, 0x00	; 0
+ 200:	e6 e2       	ldi	r30, 0x26	; 38
+ 202:	f1 e0       	ldi	r31, 0x01	; 1
+ 204:	91 83       	std	Z+1, r25	; 0x01
+ 206:	80 83       	st	Z, r24
+				int tempSenseIndex = 1;
+				for(int i = 1;i < 4;i++){
+					message = USART_Receive();
+ 208:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+					sense1[i] = message;
+ 20c:	90 e0       	ldi	r25, 0x00	; 0
+ 20e:	90 93 29 01 	sts	0x0129, r25	; 0x800129 <sense1+0x3>
+ 212:	80 93 28 01 	sts	0x0128, r24	; 0x800128 <sense1+0x2>
+ 216:	12 2d       	mov	r17, r2
+ 218:	9d c0       	rjmp	.+314    	; 0x354 <HANDLE_MESSAGE+0x214>
+					if(message = MESSAGE_ERROR_BYTE)break;
+				}
+				if(message != MESSAGE_ERROR_BYTE)sense1Set = 1;
+				}else if (message == SENSE2_BYTE){
+ 21a:	1d 3d       	cpi	r17, 0xDD	; 221
+ 21c:	81 f4       	brne	.+32     	; 0x23e <HANDLE_MESSAGE+0xfe>
+				message = USART_Receive();
+ 21e:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 222:	18 2f       	mov	r17, r24
+				if (message != MESSAGE_ERROR_BYTE){
+ 224:	8f 3f       	cpi	r24, 0xFF	; 255
+ 226:	09 f4       	brne	.+2      	; 0x22a <HANDLE_MESSAGE+0xea>
+ 228:	95 c0       	rjmp	.+298    	; 0x354 <HANDLE_MESSAGE+0x214>
+					sense2 = message;
+ 22a:	90 e0       	ldi	r25, 0x00	; 0
+ 22c:	90 93 21 01 	sts	0x0121, r25	; 0x800121 <sense2+0x1>
+ 230:	80 93 20 01 	sts	0x0120, r24	; 0x800120 <sense2>
+					sense2Set = 1;
+ 234:	30 92 1a 01 	sts	0x011A, r3	; 0x80011a <sense2Set>
+ 238:	40 92 1b 01 	sts	0x011B, r4	; 0x80011b <sense2Set+0x1>
+ 23c:	84 c0       	rjmp	.+264    	; 0x346 <HANDLE_MESSAGE+0x206>
+				}
+				}else if (message == SENSE3_BYTE){
+ 23e:	1e 3d       	cpi	r17, 0xDE	; 222
+ 240:	81 f4       	brne	.+32     	; 0x262 <HANDLE_MESSAGE+0x122>
+				message = USART_Receive();
+ 242:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 246:	18 2f       	mov	r17, r24
+				if (message != MESSAGE_ERROR_BYTE){
+ 248:	8f 3f       	cpi	r24, 0xFF	; 255
+ 24a:	09 f4       	brne	.+2      	; 0x24e <HANDLE_MESSAGE+0x10e>
+ 24c:	83 c0       	rjmp	.+262    	; 0x354 <HANDLE_MESSAGE+0x214>
+					sense3 = message;
+ 24e:	90 e0       	ldi	r25, 0x00	; 0
+ 250:	90 93 1f 01 	sts	0x011F, r25	; 0x80011f <sense3+0x1>
+ 254:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <sense3>
+					sense3Set = 1;
+ 258:	30 92 18 01 	sts	0x0118, r3	; 0x800118 <sense3Set>
+ 25c:	40 92 19 01 	sts	0x0119, r4	; 0x800119 <sense3Set+0x1>
+ 260:	72 c0       	rjmp	.+228    	; 0x346 <HANDLE_MESSAGE+0x206>
+				}
+				}else if (message == ENABLE_MANUAL_BYTE){
+ 262:	12 35       	cpi	r17, 0x52	; 82
+ 264:	29 f4       	brne	.+10     	; 0x270 <HANDLE_MESSAGE+0x130>
+				manualModeSet = 1;
+ 266:	30 92 16 01 	sts	0x0116, r3	; 0x800116 <manualModeSet>
+ 26a:	40 92 17 01 	sts	0x0117, r4	; 0x800117 <manualModeSet+0x1>
+ 26e:	72 c0       	rjmp	.+228    	; 0x354 <HANDLE_MESSAGE+0x214>
+				}else if (message == DISABLE_MANUAL_BYTE){
+ 270:	13 3d       	cpi	r17, 0xD3	; 211
+ 272:	29 f4       	brne	.+10     	; 0x27e <HANDLE_MESSAGE+0x13e>
+				manualModeSet = 0;
+ 274:	10 92 17 01 	sts	0x0117, r1	; 0x800117 <manualModeSet+0x1>
+ 278:	10 92 16 01 	sts	0x0116, r1	; 0x800116 <manualModeSet>
+ 27c:	6b c0       	rjmp	.+214    	; 0x354 <HANDLE_MESSAGE+0x214>
+				}else if(message == MOVE_FORWARDS_BYTE){
+ 27e:	14 3d       	cpi	r17, 0xD4	; 212
+ 280:	c1 f4       	brne	.+48     	; 0x2b2 <HANDLE_MESSAGE+0x172>
+				message = USART_Receive();
+ 282:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 286:	18 2f       	mov	r17, r24
+				if (message != MESSAGE_ERROR_BYTE){
+ 288:	8f 3f       	cpi	r24, 0xFF	; 255
+ 28a:	09 f4       	brne	.+2      	; 0x28e <HANDLE_MESSAGE+0x14e>
+ 28c:	63 c0       	rjmp	.+198    	; 0x354 <HANDLE_MESSAGE+0x214>
+					moveSpeed = message;
+ 28e:	90 e0       	ldi	r25, 0x00	; 0
+ 290:	90 93 09 01 	sts	0x0109, r25	; 0x800109 <moveSpeed+0x1>
+ 294:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <moveSpeed>
+					moveForwardsEnabled = 1;
+ 298:	30 92 14 01 	sts	0x0114, r3	; 0x800114 <moveForwardsEnabled>
+ 29c:	40 92 15 01 	sts	0x0115, r4	; 0x800115 <moveForwardsEnabled+0x1>
+					moveBackwardsEnabled = 0;
+ 2a0:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <moveBackwardsEnabled+0x1>
+ 2a4:	10 92 12 01 	sts	0x0112, r1	; 0x800112 <moveBackwardsEnabled>
+					rotateSet = 0;
+ 2a8:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <rotateSet+0x1>
+ 2ac:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <rotateSet>
+ 2b0:	4a c0       	rjmp	.+148    	; 0x346 <HANDLE_MESSAGE+0x206>
+				}
+				}else if(message == MOVE_BACKWARDS_BYTE){
+ 2b2:	15 3d       	cpi	r17, 0xD5	; 213
+ 2b4:	c1 f4       	brne	.+48     	; 0x2e6 <HANDLE_MESSAGE+0x1a6>
+				message = USART_Receive();
+ 2b6:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 2ba:	18 2f       	mov	r17, r24
+				if (message != MESSAGE_ERROR_BYTE){
+ 2bc:	8f 3f       	cpi	r24, 0xFF	; 255
+ 2be:	09 f4       	brne	.+2      	; 0x2c2 <HANDLE_MESSAGE+0x182>
+ 2c0:	49 c0       	rjmp	.+146    	; 0x354 <HANDLE_MESSAGE+0x214>
+					moveSpeed = message;
+ 2c2:	90 e0       	ldi	r25, 0x00	; 0
+ 2c4:	90 93 09 01 	sts	0x0109, r25	; 0x800109 <moveSpeed+0x1>
+ 2c8:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <moveSpeed>
+					moveForwardsEnabled = 1;
+ 2cc:	30 92 14 01 	sts	0x0114, r3	; 0x800114 <moveForwardsEnabled>
+ 2d0:	40 92 15 01 	sts	0x0115, r4	; 0x800115 <moveForwardsEnabled+0x1>
+					moveBackwardsEnabled = 0;
+ 2d4:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <moveBackwardsEnabled+0x1>
+ 2d8:	10 92 12 01 	sts	0x0112, r1	; 0x800112 <moveBackwardsEnabled>
+					rotateSet = 0;
+ 2dc:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <rotateSet+0x1>
+ 2e0:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <rotateSet>
+ 2e4:	30 c0       	rjmp	.+96     	; 0x346 <HANDLE_MESSAGE+0x206>
+				}
+				}else if (message == ROTATE_RIGHT_BYTE || message ==  ROTATE_LEFT_BYTE){
+ 2e6:	89 e2       	ldi	r24, 0x29	; 41
+ 2e8:	81 0f       	add	r24, r17
+ 2ea:	82 30       	cpi	r24, 0x02	; 2
+ 2ec:	b8 f4       	brcc	.+46     	; 0x31c <HANDLE_MESSAGE+0x1dc>
+				int direction = message;
+				message = USART_Receive();
+ 2ee:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 2f2:	18 2f       	mov	r17, r24
+				if (message != MESSAGE_ERROR_BYTE){
+ 2f4:	8f 3f       	cpi	r24, 0xFF	; 255
+ 2f6:	71 f1       	breq	.+92     	; 0x354 <HANDLE_MESSAGE+0x214>
+					if (direction = ROTATE_RIGHT_BYTE){
+						rotateAngle = message;
+ 2f8:	90 e0       	ldi	r25, 0x00	; 0
+ 2fa:	90 93 07 01 	sts	0x0107, r25	; 0x800107 <__data_end+0x1>
+ 2fe:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <__data_end>
+						}else{
+						rotateAngle = message*-1;
+					}
+					rotateSet = 1;
+ 302:	30 92 10 01 	sts	0x0110, r3	; 0x800110 <rotateSet>
+ 306:	40 92 11 01 	sts	0x0111, r4	; 0x800111 <rotateSet+0x1>
+					moveForwardsEnabled = 0;
+ 30a:	10 92 15 01 	sts	0x0115, r1	; 0x800115 <moveForwardsEnabled+0x1>
+ 30e:	10 92 14 01 	sts	0x0114, r1	; 0x800114 <moveForwardsEnabled>
+					moveBackwardsEnabled = 0;
+ 312:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <moveBackwardsEnabled+0x1>
+ 316:	10 92 12 01 	sts	0x0112, r1	; 0x800112 <moveBackwardsEnabled>
+ 31a:	15 c0       	rjmp	.+42     	; 0x346 <HANDLE_MESSAGE+0x206>
+				}
+				}else if(message == COMMAND1_BYTE){
+ 31c:	19 3d       	cpi	r17, 0xD9	; 217
+ 31e:	29 f4       	brne	.+10     	; 0x32a <HANDLE_MESSAGE+0x1ea>
+				command1Set = 1;
+ 320:	30 92 0e 01 	sts	0x010E, r3	; 0x80010e <command1Set>
+ 324:	40 92 0f 01 	sts	0x010F, r4	; 0x80010f <command1Set+0x1>
+ 328:	15 c0       	rjmp	.+42     	; 0x354 <HANDLE_MESSAGE+0x214>
+				}else if(message == COMMAND2_BYTE){
+ 32a:	1a 3d       	cpi	r17, 0xDA	; 218
+ 32c:	29 f4       	brne	.+10     	; 0x338 <HANDLE_MESSAGE+0x1f8>
+				command2Set = 1;
+ 32e:	30 92 0c 01 	sts	0x010C, r3	; 0x80010c <command2Set>
+ 332:	40 92 0d 01 	sts	0x010D, r4	; 0x80010d <command2Set+0x1>
+ 336:	0e c0       	rjmp	.+28     	; 0x354 <HANDLE_MESSAGE+0x214>
+				}else if(message == COMMAND3_BYTE){
+ 338:	1b 3d       	cpi	r17, 0xDB	; 219
+ 33a:	29 f4       	brne	.+10     	; 0x346 <HANDLE_MESSAGE+0x206>
+				command3Set = 1;
+ 33c:	30 92 0a 01 	sts	0x010A, r3	; 0x80010a <command3Set>
+ 340:	40 92 0b 01 	sts	0x010B, r4	; 0x80010b <command3Set+0x1>
+ 344:	07 c0       	rjmp	.+14     	; 0x354 <HANDLE_MESSAGE+0x214>
+			//End Control requests
+
+			//////////////////////////////////////////////////////////////////////////
+			//Special requests
+
+			if(message == BOOTLOADER_BYTE){
+ 346:	1f 3c       	cpi	r17, 0xCF	; 207
+ 348:	b9 f0       	breq	.+46     	; 0x378 <HANDLE_MESSAGE+0x238>
+				//enter boot loader
+				}else if (message == HIBERNATE_BYTE){
+				//Hibernate
+				}else if(message == CHANGE_ID_BYTE){
+ 34a:	11 3d       	cpi	r17, 0xD1	; 209
+ 34c:	19 f4       	brne	.+6      	; 0x354 <HANDLE_MESSAGE+0x214>
+				//Change id
+				unsigned char newId = USART_Receive();
+ 34e:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 352:	12 c0       	rjmp	.+36     	; 0x378 <HANDLE_MESSAGE+0x238>
+
+			//////////////////////////////////////////////////////////////////////////
+			//Information requests
+			//step 1: register all the sent requests
+			
+			if(message == STATUS1_BYTE){
+ 354:	1f 3d       	cpi	r17, 0xDF	; 223
+ 356:	09 f4       	brne	.+2      	; 0x35a <HANDLE_MESSAGE+0x21a>
+ 358:	d8 c0       	rjmp	.+432    	; 0x50a <__LOCK_REGION_LENGTH__+0x10a>
+				request1 = 1;
+				}else if (message == STATUS2_BYTE){
+ 35a:	10 3e       	cpi	r17, 0xE0	; 224
+ 35c:	09 f4       	brne	.+2      	; 0x360 <HANDLE_MESSAGE+0x220>
+ 35e:	d8 c0       	rjmp	.+432    	; 0x510 <__LOCK_REGION_LENGTH__+0x110>
+				request2 = 1;
+				}else if (message == STATUS3_BYTE){
+ 360:	11 3e       	cpi	r17, 0xE1	; 225
+ 362:	09 f4       	brne	.+2      	; 0x366 <HANDLE_MESSAGE+0x226>
+ 364:	d8 c0       	rjmp	.+432    	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
+				request3 = 1;
+				}else if (message == CHARGE_BYTE){
+ 366:	12 3e       	cpi	r17, 0xE2	; 226
+ 368:	09 f4       	brne	.+2      	; 0x36c <HANDLE_MESSAGE+0x22c>
+ 36a:	d8 c0       	rjmp	.+432    	; 0x51c <__LOCK_REGION_LENGTH__+0x11c>
+				request4 = 1;
+				}else if (message == SPEED_BYTE){
+ 36c:	13 3e       	cpi	r17, 0xE3	; 227
+ 36e:	09 f4       	brne	.+2      	; 0x372 <HANDLE_MESSAGE+0x232>
+ 370:	d8 c0       	rjmp	.+432    	; 0x522 <__LOCK_REGION_LENGTH__+0x122>
+				request5 = 1;
+				}else if (message == ORIENTATION_BYTE){
+ 372:	14 3e       	cpi	r17, 0xE4	; 228
+ 374:	09 f4       	brne	.+2      	; 0x378 <HANDLE_MESSAGE+0x238>
+ 376:	d8 c0       	rjmp	.+432    	; 0x528 <__LOCK_REGION_LENGTH__+0x128>
+				request6 = 1;
+			}
+			if (message == REQUEST_DATA){
+ 378:	15 3e       	cpi	r17, 0xE5	; 229
+ 37a:	09 f0       	breq	.+2      	; 0x37e <HANDLE_MESSAGE+0x23e>
+ 37c:	51 c0       	rjmp	.+162    	; 0x420 <__LOCK_REGION_LENGTH__+0x20>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 37e:	ef e3       	ldi	r30, 0x3F	; 63
+ 380:	fc e9       	ldi	r31, 0x9C	; 156
+ 382:	31 97       	sbiw	r30, 0x01	; 1
+ 384:	f1 f7       	brne	.-4      	; 0x382 <HANDLE_MESSAGE+0x242>
+ 386:	00 c0       	rjmp	.+0      	; 0x388 <HANDLE_MESSAGE+0x248>
+ 388:	00 00       	nop
+				//step 2:send all the requested fields, stored in array
+				_delay_ms(10);
+				USART_Transmit(address);
+ 38a:	80 2f       	mov	r24, r16
+ 38c:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+				USART_Transmit(BEGIN_BYTE);
+ 390:	89 ec       	ldi	r24, 0xC9	; 201
+ 392:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+				if (request1 == 1){
+ 396:	c1 30       	cpi	r28, 0x01	; 1
+ 398:	d1 05       	cpc	r29, r1
+ 39a:	39 f4       	brne	.+14     	; 0x3aa <HANDLE_MESSAGE+0x26a>
+					USART_Transmit(STATUS1_BYTE);
+ 39c:	8f ed       	ldi	r24, 0xDF	; 223
+ 39e:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+					USART_Transmit(status1);
+ 3a2:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <status1>
+ 3a6:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+					//PORTB = 0xFF;
+				}
+				if (request2 == 1){
+ 3aa:	f1 e0       	ldi	r31, 0x01	; 1
+ 3ac:	cf 16       	cp	r12, r31
+ 3ae:	d1 04       	cpc	r13, r1
+ 3b0:	39 f4       	brne	.+14     	; 0x3c0 <HANDLE_MESSAGE+0x280>
+					USART_Transmit(STATUS2_BYTE);
+ 3b2:	80 ee       	ldi	r24, 0xE0	; 224
+ 3b4:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+					USART_Transmit(status2);
+ 3b8:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <status2>
+ 3bc:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+				}
+				if (request3 == 1){
+ 3c0:	81 e0       	ldi	r24, 0x01	; 1
+ 3c2:	e8 16       	cp	r14, r24
+ 3c4:	f1 04       	cpc	r15, r1
+ 3c6:	39 f4       	brne	.+14     	; 0x3d6 <HANDLE_MESSAGE+0x296>
+					USART_Transmit(STATUS3_BYTE);
+ 3c8:	81 ee       	ldi	r24, 0xE1	; 225
+ 3ca:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+					USART_Transmit(status3);
+ 3ce:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
+ 3d2:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+				}
+				if (request4 == 1){
+ 3d6:	91 e0       	ldi	r25, 0x01	; 1
+ 3d8:	89 16       	cp	r8, r25
+ 3da:	91 04       	cpc	r9, r1
+ 3dc:	39 f4       	brne	.+14     	; 0x3ec <HANDLE_MESSAGE+0x2ac>
+					USART_Transmit(CHARGE_BYTE);
+ 3de:	82 ee       	ldi	r24, 0xE2	; 226
+ 3e0:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+					USART_Transmit(charge);
+ 3e4:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <charge>
+ 3e8:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+				}
+				if (request5 == 1){
+ 3ec:	e1 e0       	ldi	r30, 0x01	; 1
+ 3ee:	6e 16       	cp	r6, r30
+ 3f0:	71 04       	cpc	r7, r1
+ 3f2:	39 f4       	brne	.+14     	; 0x402 <__LOCK_REGION_LENGTH__+0x2>
+					USART_Transmit(SPEED_BYTE);
+ 3f4:	83 ee       	ldi	r24, 0xE3	; 227
+ 3f6:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+					USART_Transmit(speed);
+ 3fa:	80 91 25 01 	lds	r24, 0x0125	; 0x800125 <speed>
+ 3fe:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+				}
+				if (request6 == 1){
+ 402:	f1 e0       	ldi	r31, 0x01	; 1
+ 404:	af 16       	cp	r10, r31
+ 406:	b1 04       	cpc	r11, r1
+ 408:	39 f4       	brne	.+14     	; 0x418 <__LOCK_REGION_LENGTH__+0x18>
+					USART_Transmit(ORIENTATION_BYTE);
+ 40a:	84 ee       	ldi	r24, 0xE4	; 228
+ 40c:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+					USART_Transmit(orientation);
+ 410:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <orientation>
+ 414:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+				}
+				USART_Transmit(END_BYTE);
+ 418:	8a ec       	ldi	r24, 0xCA	; 202
+ 41a:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Transmit>
+ 41e:	68 c0       	rjmp	.+208    	; 0x4f0 <__LOCK_REGION_LENGTH__+0xf0>
+			}
+			//////////////////////////////////////////////////////////////////////////
+			//End information requests
+
+			//If the communication is ended, fulfill all the requests and updates
+			if (message == END_BYTE || message == MESSAGE_ERROR_BYTE){
+ 420:	1a 3c       	cpi	r17, 0xCA	; 202
+ 422:	19 f0       	breq	.+6      	; 0x42a <__LOCK_REGION_LENGTH__+0x2a>
+ 424:	1f 3f       	cpi	r17, 0xFF	; 255
+ 426:	09 f0       	breq	.+2      	; 0x42a <__LOCK_REGION_LENGTH__+0x2a>
+ 428:	63 c0       	rjmp	.+198    	; 0x4f0 <__LOCK_REGION_LENGTH__+0xf0>
+				message = MESSAGE_ERROR_BYTE;
+				if (sense1Set == 1){
+ 42a:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <sense1Set>
+ 42e:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <sense1Set+0x1>
+ 432:	01 97       	sbiw	r24, 0x01	; 1
+ 434:	21 f4       	brne	.+8      	; 0x43e <__LOCK_REGION_LENGTH__+0x3e>
+					sense1Set = 0;
+ 436:	10 92 1d 01 	sts	0x011D, r1	; 0x80011d <sense1Set+0x1>
+ 43a:	10 92 1c 01 	sts	0x011C, r1	; 0x80011c <sense1Set>
+				}
+				if (sense2Set == 1){
+ 43e:	80 91 1a 01 	lds	r24, 0x011A	; 0x80011a <sense2Set>
+ 442:	90 91 1b 01 	lds	r25, 0x011B	; 0x80011b <sense2Set+0x1>
+ 446:	01 97       	sbiw	r24, 0x01	; 1
+ 448:	21 f4       	brne	.+8      	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+					sense2Set = 0;
+ 44a:	10 92 1b 01 	sts	0x011B, r1	; 0x80011b <sense2Set+0x1>
+ 44e:	10 92 1a 01 	sts	0x011A, r1	; 0x80011a <sense2Set>
+				}
+				if (sense3Set == 1){
+ 452:	80 91 18 01 	lds	r24, 0x0118	; 0x800118 <sense3Set>
+ 456:	90 91 19 01 	lds	r25, 0x0119	; 0x800119 <sense3Set+0x1>
+ 45a:	01 97       	sbiw	r24, 0x01	; 1
+ 45c:	21 f4       	brne	.+8      	; 0x466 <__LOCK_REGION_LENGTH__+0x66>
+					sense3Set = 0;
+ 45e:	10 92 19 01 	sts	0x0119, r1	; 0x800119 <sense3Set+0x1>
+ 462:	10 92 18 01 	sts	0x0118, r1	; 0x800118 <sense3Set>
+				}
+				if (manualModeSet == 1){
+ 466:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <manualModeSet>
+ 46a:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <manualModeSet+0x1>
+ 46e:	01 97       	sbiw	r24, 0x01	; 1
+ 470:	01 f5       	brne	.+64     	; 0x4b2 <__LOCK_REGION_LENGTH__+0xb2>
+					if (rotateSet){
+ 472:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <rotateSet>
+ 476:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <rotateSet+0x1>
+ 47a:	89 2b       	or	r24, r25
+ 47c:	29 f0       	breq	.+10     	; 0x488 <__LOCK_REGION_LENGTH__+0x88>
+						rotateSet = 0;
+ 47e:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <rotateSet+0x1>
+ 482:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <rotateSet>
+ 486:	15 c0       	rjmp	.+42     	; 0x4b2 <__LOCK_REGION_LENGTH__+0xb2>
+						}else if (moveForwardsEnabled){
+ 488:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <moveForwardsEnabled>
+ 48c:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <moveForwardsEnabled+0x1>
+ 490:	89 2b       	or	r24, r25
+ 492:	29 f0       	breq	.+10     	; 0x49e <__LOCK_REGION_LENGTH__+0x9e>
+						moveForwardsEnabled = 0;
+ 494:	10 92 15 01 	sts	0x0115, r1	; 0x800115 <moveForwardsEnabled+0x1>
+ 498:	10 92 14 01 	sts	0x0114, r1	; 0x800114 <moveForwardsEnabled>
+ 49c:	0a c0       	rjmp	.+20     	; 0x4b2 <__LOCK_REGION_LENGTH__+0xb2>
+						}else if (moveBackwardsEnabled){
+ 49e:	80 91 12 01 	lds	r24, 0x0112	; 0x800112 <moveBackwardsEnabled>
+ 4a2:	90 91 13 01 	lds	r25, 0x0113	; 0x800113 <moveBackwardsEnabled+0x1>
+ 4a6:	89 2b       	or	r24, r25
+ 4a8:	21 f0       	breq	.+8      	; 0x4b2 <__LOCK_REGION_LENGTH__+0xb2>
+						moveBackwardsEnabled = 0;
+ 4aa:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <moveBackwardsEnabled+0x1>
+ 4ae:	10 92 12 01 	sts	0x0112, r1	; 0x800112 <moveBackwardsEnabled>
+					}
+				}
+				if (command1Set == 1){
+ 4b2:	80 91 0e 01 	lds	r24, 0x010E	; 0x80010e <command1Set>
+ 4b6:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <command1Set+0x1>
+ 4ba:	01 97       	sbiw	r24, 0x01	; 1
+ 4bc:	21 f4       	brne	.+8      	; 0x4c6 <__LOCK_REGION_LENGTH__+0xc6>
+					command1Set = 0;
+ 4be:	10 92 0f 01 	sts	0x010F, r1	; 0x80010f <command1Set+0x1>
+ 4c2:	10 92 0e 01 	sts	0x010E, r1	; 0x80010e <command1Set>
+				}
+				if (command2Set == 1){
+ 4c6:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <command2Set>
+ 4ca:	90 91 0d 01 	lds	r25, 0x010D	; 0x80010d <command2Set+0x1>
+ 4ce:	01 97       	sbiw	r24, 0x01	; 1
+ 4d0:	21 f4       	brne	.+8      	; 0x4da <__LOCK_REGION_LENGTH__+0xda>
+					command2Set = 0;
+ 4d2:	10 92 0d 01 	sts	0x010D, r1	; 0x80010d <command2Set+0x1>
+ 4d6:	10 92 0c 01 	sts	0x010C, r1	; 0x80010c <command2Set>
+				}
+				if (command3Set == 1){
+ 4da:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <command3Set>
+ 4de:	90 91 0b 01 	lds	r25, 0x010B	; 0x80010b <command3Set+0x1>
+ 4e2:	01 97       	sbiw	r24, 0x01	; 1
+ 4e4:	21 f5       	brne	.+72     	; 0x52e <__LOCK_REGION_LENGTH__+0x12e>
+					command3Set = 0;
+ 4e6:	10 92 0b 01 	sts	0x010B, r1	; 0x80010b <command3Set+0x1>
+ 4ea:	10 92 0a 01 	sts	0x010A, r1	; 0x80010a <command3Set>
+ 4ee:	1f c0       	rjmp	.+62     	; 0x52e <__LOCK_REGION_LENGTH__+0x12e>
+				}
+			}else{
+				//read the next message:
+				message = USART_Receive();
+ 4f0:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 4f4:	18 2f       	mov	r17, r24
+		int request3 = 0;
+		int request4 = 0;
+		int request5 = 0;
+		int request6 = 0;
+
+		while(message != MESSAGE_ERROR_BYTE && message != END_BYTE){
+ 4f6:	8f 3f       	cpi	r24, 0xFF	; 255
+ 4f8:	d1 f0       	breq	.+52     	; 0x52e <__LOCK_REGION_LENGTH__+0x12e>
+ 4fa:	8a 3c       	cpi	r24, 0xCA	; 202
+ 4fc:	09 f0       	breq	.+2      	; 0x500 <__LOCK_REGION_LENGTH__+0x100>
+ 4fe:	78 ce       	rjmp	.-784    	; 0x1f0 <HANDLE_MESSAGE+0xb0>
+ 500:	16 c0       	rjmp	.+44     	; 0x52e <__LOCK_REGION_LENGTH__+0x12e>
+		//Loop until all robot have been addresses
+		while(message!= BEGIN_BYTE && message != MESSAGE_ERROR_BYTE && message != END_BYTE){
+			message = USART_Receive();
+		}
+		if (message == BEGIN_BYTE){
+			message = USART_Receive();
+ 502:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+ 506:	18 2f       	mov	r17, r24
+ 508:	5c ce       	rjmp	.-840    	; 0x1c2 <HANDLE_MESSAGE+0x82>
+			//////////////////////////////////////////////////////////////////////////
+			//Information requests
+			//step 1: register all the sent requests
+			
+			if(message == STATUS1_BYTE){
+				request1 = 1;
+ 50a:	c3 2d       	mov	r28, r3
+ 50c:	d4 2d       	mov	r29, r4
+ 50e:	88 cf       	rjmp	.-240    	; 0x420 <__LOCK_REGION_LENGTH__+0x20>
+				}else if (message == STATUS2_BYTE){
+				request2 = 1;
+ 510:	c3 2c       	mov	r12, r3
+ 512:	d4 2c       	mov	r13, r4
+ 514:	85 cf       	rjmp	.-246    	; 0x420 <__LOCK_REGION_LENGTH__+0x20>
+				}else if (message == STATUS3_BYTE){
+				request3 = 1;
+ 516:	e3 2c       	mov	r14, r3
+ 518:	f4 2c       	mov	r15, r4
+ 51a:	82 cf       	rjmp	.-252    	; 0x420 <__LOCK_REGION_LENGTH__+0x20>
+				}else if (message == CHARGE_BYTE){
+				request4 = 1;
+ 51c:	83 2c       	mov	r8, r3
+ 51e:	94 2c       	mov	r9, r4
+ 520:	7f cf       	rjmp	.-258    	; 0x420 <__LOCK_REGION_LENGTH__+0x20>
+				}else if (message == SPEED_BYTE){
+				request5 = 1;
+ 522:	63 2c       	mov	r6, r3
+ 524:	74 2c       	mov	r7, r4
+ 526:	7c cf       	rjmp	.-264    	; 0x420 <__LOCK_REGION_LENGTH__+0x20>
+				}else if (message == ORIENTATION_BYTE){
+				request6 = 1;
+ 528:	a3 2c       	mov	r10, r3
+ 52a:	b4 2c       	mov	r11, r4
+ 52c:	79 cf       	rjmp	.-270    	; 0x420 <__LOCK_REGION_LENGTH__+0x20>
+			
+		}
+
+	}
+
+}//End main while loop
+ 52e:	df 91       	pop	r29
+ 530:	cf 91       	pop	r28
+ 532:	1f 91       	pop	r17
+ 534:	0f 91       	pop	r16
+ 536:	ff 90       	pop	r15
+ 538:	ef 90       	pop	r14
+ 53a:	df 90       	pop	r13
+ 53c:	cf 90       	pop	r12
+ 53e:	bf 90       	pop	r11
+ 540:	af 90       	pop	r10
+ 542:	9f 90       	pop	r9
+ 544:	8f 90       	pop	r8
+ 546:	7f 90       	pop	r7
+ 548:	6f 90       	pop	r6
+ 54a:	4f 90       	pop	r4
+ 54c:	3f 90       	pop	r3
+ 54e:	2f 90       	pop	r2
+ 550:	08 95       	ret
+
+00000552 <main>:
+	//RX Enable pin
+	//DDRD &= ~(1 << RX_ENABLE_PIN);
+	//PORTD &= ~(1 << RX_ENABLE_PIN);
+
+	//Initialize USART
+	USART_Init(MYUBRR);
+ 552:	8f ec       	ldi	r24, 0xCF	; 207
+ 554:	90 e0       	ldi	r25, 0x00	; 0
+ 556:	0e 94 67 00 	call	0xce	; 0xce <USART_Init>
+	INIT_CARRIER();
+ 55a:	0e 94 53 00 	call	0xa6	; 0xa6 <INIT_CARRIER>
+
+	SETUP_IO();
+ 55e:	0e 94 8c 00 	call	0x118	; 0x118 <SETUP_IO>
+	SET_COLOUR(RED);
+ 562:	81 e0       	ldi	r24, 0x01	; 1
+ 564:	90 e0       	ldi	r25, 0x00	; 0
+ 566:	0e 94 90 00 	call	0x120	; 0x120 <SET_COLOUR>
+
+	//disableRX();
+
+	while(1){
+
+		unsigned char address = USART_Receive();
+ 56a:	0e 94 7a 00 	call	0xf4	; 0xf4 <USART_Receive>
+		//Check if robot is being addressed
+		HANDLE_MESSAGE(address);
+ 56e:	0e 94 a0 00 	call	0x140	; 0x140 <HANDLE_MESSAGE>
+
+		
+	}
+ 572:	fb cf       	rjmp	.-10     	; 0x56a <main+0x18>
+
+00000574 <_exit>:
+ 574:	f8 94       	cli
+
+00000576 <__stop_program>:
+ 576:	ff cf       	rjmp	.-2      	; 0x576 <__stop_program>
